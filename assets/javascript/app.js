@@ -14,9 +14,9 @@ var intervalId;
 
 var chosenAnswer;
 
-var questionObject = [{ question: "What comess befor T ?", answer: "s", choices: ["a", "f", "s"], time: 20 },
-{ question: "I am second Question", answer: "second", choices: ["first", "second", "third"], time: 30 },
-{ question: "I am third Question", answer: "third", choices: ["first", "second", "third"], time: 40 }
+var questionObject = [{ question: "What is one quarter of 1,000??", answer: "250", choices: ["250", "500", "125"], time: 10 },
+{ question: "Which sea creature has three hearts?", answer: "octopus", choices: ["octopus", "sea horse", "whale"], time: 15 },
+{ question: "What is the Italian word for pie?", answer: "pizza", choices: ["pizza", "something", "nothing"], time: 10 }
 ]
 var totalQuestion = questionObject.length;
 
