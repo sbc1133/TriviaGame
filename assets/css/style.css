@@ -2,12 +2,27 @@
     background: #75ba48;
     padding: 20px;
     color: #fff;
-    border-bottom-right-radius: 55px;
+    /*border-bottom-right-radius: 55px;*/
     border-top-left-radius: 55px;
+    border-top-right-radius: 55px;
 }
 
 #qid{
     margin-right: 22px;
     background-color: #ffffff;
     color: #aaaaaa;
+}
+
+#quiz{
+    border-bottom-right-radius: 60px;
+    border-bottom-left-radius:60px;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    padding-left: 0%;
+    padding-right: 0%;
+    margin-bottom:10%;
+}
+.row{
+display:flex; 
+flex-direction:row;
 }

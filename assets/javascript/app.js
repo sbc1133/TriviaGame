@@ -3,13 +3,7 @@
 @project: Trivia Game 
 **************************************/
 
-//TODO:   Create an object quizQuestion with properties Question, answers , time, correctAnswer
-//TODO:     
-//TODO:
-//TODO:
-//TODO:
-//TODO:
-//TODO:
+//-------------------Global Variables------------------
 
 var questionNo = 0;
 
@@ -20,16 +14,14 @@ var intervalId;
 
 var chosenAnswer;
 
-var questionObject = [{ question: "I am first Question", answer: "first", choices: ["first", "second", "third"], time: 20 },
+var questionObject = [{ question: "What comess befor T ?", answer: "s", choices: ["a", "f", "s"], time: 20 },
 { question: "I am second Question", answer: "second", choices: ["first", "second", "third"], time: 30 },
 { question: "I am third Question", answer: "third", choices: ["first", "second", "third"], time: 40 }
 ]
 var totalQuestion = questionObject.length;
 
 
-// display first question in html
-
-
+//-------------------------Functions------------------------------------------
 
 function stop() {
 
@@ -40,10 +32,9 @@ function stop() {
 }
 
 function decrement() {
+
     var number = $("#timer").text();
-
     number--;
-
     //  Once number hits zero...
     if (number === 0) {
         $("#timer").text(number);
@@ -56,15 +47,10 @@ function decrement() {
 function run() {
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
-
 }
 
-
-
 function displayQuestion(qo) {
-    // var correct = qo.answer;
-
-    // Dispaly questioon number 
+    // Dispaly Question Number 
     $("#qid").text(index + 1);
     // Display Question 
     $("#question").text(qo.question);
@@ -74,19 +60,23 @@ function displayQuestion(qo) {
     $("#label-3").text(qo.choices[2]);
     $("#timer").text(qo.time);
     $("#message").text("");
+    $('input[name="selector"]').prop('checked', false);
     run();
-    // return correct;
 }
+
 function showResults() {
     $(".my-row-2").addClass("invisible");
     $(".my-row-3").addClass("invisible");
-    $(".my-row-4").addClass("invisible");
     var resultContainer = $("<div>");
-    resultContainer.append("<h2>")
+    var correctContainer = $("<h2>").text("Correct Answers: ").append($("<span>").text(correctCount));
+    var incorrectContainer = $("<h2>").text("Incorrect Answers: ").append($("<span>").text(incorrectCount));
+    resultContainer.append(correctContainer).append(incorrectContainer);
     $("#header").append(resultContainer);
 }
 
-/////--------------------Script starts here ---------------
+//-------------------------------------------------------
+//------------------------- Script Starts ---------------
+//--------------------------------------------------------
 var index = 0;
 console.log("there are :" + questionObject.length + " questions in quiz");
 
@@ -94,24 +84,25 @@ $("#start-game").click(function () {
     $(".start-page").addClass("invisible");
     $(".my-row-2").removeClass("invisible");
     $(".my-row-3").removeClass("invisible");
-    $(".my-row-4").removeClass("invisible");
+    
+
     // displaying first question
     displayQuestion(questionObject[index]);
-    $("input").click(function () {
+
+   $("input").click(function () {
         $("input[type='radio']:checked").each(function () {
             var idVal = $(this).attr("id");
             chosenAnswer = $("label[for='" + idVal + "']").text();
             console.log("i am chose: ", chosenAnswer);
         });
-
         if (chosenAnswer === questionObject[index].answer) {
             console.log("correct answer");
-
+            $("#answer").text("Yay! you got it Right"+"\n"+ questionObject[index].answer);
             index = index + 1;
             correctCount++;
-            setTimeout(function () { displayQuestion(questionObject[index]) }, 2000);
+            setTimeout(function () { displayQuestion(questionObject[index]) }, 3000);
             $("#message").removeClass("invisible");
-            $("#message").text("Correct Answer!")
+            $("#message").attr("class","text-success").text("Correct Answer!")
             stop();
             if (index === totalQuestion) {
                 console.log("found last question")
@@ -119,15 +110,17 @@ $("#start-game").click(function () {
                     $("#message").removeClass("invisible");
                     $("#message").text("Correct Answer!")
                 }
-                setTimeout(function(){showResults()},2000);
+                setTimeout(function(){showResults()},3000);
             }
-        } else {
-            $("#message").text("Incorrect Answer!")
-            setTimeout(function () { displayQuestion(questionObject[index]) }, 2000);
+        } else {           
+            $("#message").text("Incorrect Answer!");
+            $("#answer").text(questionObject[index].answer);
+            index = index+1
+            setTimeout(function () { displayQuestion(questionObject[index]) }, 3000);
             console.log("Incorrect answer :(");
             incorrectCount++
             $("#message").removeClass("invisible");
-            $("#message").text("InCorrect Answer!")
+            $("#message").attr("class","text-danger").text("Incorrect Answer!")
             stop();
             if (index === totalQuestion) {
                 console.log("found last question")
@@ -135,7 +128,7 @@ $("#start-game").click(function () {
                     $("#message").removeClass("invisible");
                     $("#message").text("Correct Answer!")
                 }
-                setTimeout(function(){showResults()},2000);
+                setTimeout(function(){showResults()},3000);
             }
         }
     });
