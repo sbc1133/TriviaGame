@@ -14,71 +14,83 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="bg-dark text-primary">Trivia Quiz</h1>
-        <br>
-        <h3> Timer:<span class ="bg-primary text-dark" id="timer">00:00</span></h3>
-        <br>
-        <div class="row"><br><br>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8 bg-dark text-white">
+    <div class="container bg-light text-white">
+        <div class="row my-row-1">
+            <div class="col-sm-12 text-dark" id="header">
+                <h1 class="bg-dark text-primary text-center" id="header">Trivia Quiz</h1>
+                <!-- Add dyunamic HTML here to show final results-->
+                <div class = "start-page text-center" >
+                        <button type="button" class="btn btn-success" id="start-game">Start Game</button>
+                </div>
+            </div>
+        </div>
+        <div class="row text-dark my-row-2 invisible">
+            <div class="col-sm-4"> something
+            </div>
+            <div class="col-sm-4">
+                <h2  class = "invisible" id ="message"></h2>
+            </div>
+            <div class="col-sm-4">
 
-                    <div id="quiz">
-                        <div class="question">
-                            <h3><span class="label label-warning" id="qid">1</span>
-                                <span id="question"></span>
-                            </h3>
-                        </div>
-                        <br>
-                        <br>
-                        <ul>
-
-                            <li>
-                                <input type="radio" id="f-option" name="selector" value="1">
-                                <label for="f-option" id ="label-1" class="element-animation"></label>
-                               
-                            </li>
-
-                            <li>
-                                <input type="radio" id="s-option" name="selector" value="2">
-                                <label for="s-option" id ="label-2" class="element-animation">comment //</label>
-                                <div class="check">
-                                    <div class="inside"></div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <input type="radio" id="t-option" name="selector" value="3">
-                                <label for="t-option" id ="label-3" class="element-animation">comment [ ]</label>
-                                <div class="check">
-                                    <div class="inside"></div>
-                                </div>
-                            </li>
-
-                        </ul>
-
+            </div>
+        </div>
+        <div class="row my-row-3 invisible">
+            <div class="col-sm-2 text-dark">
+                    <h3> Timer:&nbsp;<span id="timer">00:00</span></h3>
+            </div>
+            <div class="col-sm-8 bg-dark">
+                <div id="quiz">
+                    <div class="question">
+                        <h3><span class="label label-warning" id="qid"></span>
+                            <span id="question"></span>
+                        </h3>
                     </div>
-                </div>
-                <div class="col-sm-2"></div>
-                <div class="text-muted">
-                    <span id="answer"></span>
+                    <br>
+                    <br>
+                    <ul>
+                        <li>
+                            <input type="radio" id="f-option" name="selector" value="1">
+                            <label for="f-option" id="label-1" class="element-animation"></label>
+                        </li>
+                        <li>
+                            <input type="radio" id="s-option" name="selector" value="2">
+                            <label for="s-option" id="label-2" class="element-animation">comment //</label>
+                            <div class="check">
+                                <div class="inside"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <input type="radio" id="t-option" name="selector" value="3">
+                            <label for="t-option" id="label-3" class="element-animation">comment [ ]</label>
+                            <div class="check">
+                                <div class="inside"></div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <br>
-            <br>
-            <div class ="row">
-               
-                    <button type="button" class="btn btn-info" value="Submit Button">
+            <div class="col-sm-2">
+                    <div class="text-muted">
+                            <span >correct answer: &nbsp;<p id ="answer"></p></span>
+                        </div>
             </div>
+          
+        </div>
+        <div class="row my-row-4 invisible">
+            <div class="col-sm-12 text-center">
+                <button type="button" class="btn btn-secondary" value="Submit Button" id = "submitButton">Submit</button>
+                <button type="button" class="btn btn-secondary" value="reset">Reset</button>
+            </div>
+
         </div>
     </div>
 
 
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <!-- Script -->
-  <script src="assets/javascript/app.js"></script>
+    <!-- Script -->
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
